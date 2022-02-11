@@ -1,0 +1,22 @@
+Data scripts for Figure 2
+-------------------------
+These should be run in sequence.
+
+
+Model fitting on all ciliated cells with 4 mM KCl and 0 mM KCl:
+    fitting/electrode_and_RC.py
+    fitting/hyperpolarized.py
+    fitting/hyperpolarized_p1.py
+    fitting/hyperpolarized_GHK.py
+
+Data preparation (on two folders: 4 mM KCl and 0 mM KCl):
+    data_preparation/make_tables.py
+
+Model comparison (4 mM KCl only):
+    analysis/compare_hyperpolarized_fits.py
+
+Selection (data from hyperpolarized.py, 4 mM KCl only):
+    analysis/selection_hyperpolarized.py
+
+Display of all fits (data from hyperpolarized.py, 4 mM KCl only):
+    analysis/display_all_fits.py (choice 0 and 1)

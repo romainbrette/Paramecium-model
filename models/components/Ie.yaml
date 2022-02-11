@@ -1,0 +1,13 @@
+name: electrode model
+
+equations: |
+  Ie = (ve-v)/Re : amp
+  dve/dt = (v-ve+Re*I)/taue : volt
+
+init:
+  ve : EL
+
+bounds:
+  # Ie
+  taue : [0.05*ms, 10*ms]
+  Re : [5*Mohm, 300*Mohm]

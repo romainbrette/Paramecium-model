@@ -1,0 +1,8 @@
+name: GHK model of current-voltage dependence, IK
+
+equations: |
+  IV_K = -(v/DV+(Kratio-1)/exprel(-v/DV)) : 1
+
+bounds:
+  # IV_K
+  Kratio : [1,1,20,200]

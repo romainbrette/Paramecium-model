@@ -1,0 +1,11 @@
+name: Electromotor coupling with angle
+
+equations: |
+  cos_angle = cos(angle_min + angle_span/(1+exp(-n_electromotor*(pCa-pK_electromotor)))) : 1
+  sin_angle = sin(angle_min + angle_span/(1+exp(-n_electromotor*(pCa-pK_electromotor)))) : 1
+
+bounds:
+  pK_electromotor : [-2, -2, 4.5, 8] # 1 uM = 2.3
+  n_electromotor : [0.1,1,5,20]
+  angle_span : [-6.2832,-6.2832,6.2832,6.2832]
+  angle_min: [-1.57,-1.57,1.57,1.57]

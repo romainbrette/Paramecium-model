@@ -1,0 +1,18 @@
+name: Calcium dynamics in the ciliary compartment, with diffusion
+
+equations: |
+  dpCa/dt = ICa_cilia/(2*F*Cai0_cilia*v_cilia)*exp(-pCa) + alpha_cilia*(exp(-pCa)-1) - Jpump_cilia : 1
+  Jpump_cilia = Jpumpmax_cilia / (1+exp(pCa)) : 1/second
+
+bounds:
+  alpha_cilia : [0*Hz,1/(1*second),1/(.04*second), 1/(1*ms)]
+  Jpumpmax_cilia: [0/second, 100/second,10000/second, 10000/second]
+
+init:
+  # Cai_cilia
+  pCa : 0
+
+constants:
+  # Cai_cilia
+  Cai0_cilia : 1e-7*molar
+  v_cilia : 1700*um**3

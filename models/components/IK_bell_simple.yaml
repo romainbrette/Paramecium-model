@@ -1,0 +1,19 @@
+name: IK with bell time constant (no inactivation), simplified, restricted bounds
+
+equations: |
+    IK = g_IK * n_IK**2 * IV_K : amp
+    ninf_IK = 1/(1+exp((V_IK-v)/k_IK)) : 1
+    dn_IK / dt = (ninf_IK - n_IK)/tau_IK: 1
+    tau_IK = a_IK + b_IK/(cosh((v-V_IK)/(2*k_IK))) : second
+
+init:
+  n_IK : 1e-3
+
+constants:
+  a_IK : 0.1*ms
+
+bounds:
+    V_IK : [-30*mV, 0 * mV, 20 * mV, 40*mV]  # half-activation voltage
+    k_IK : [3*mV, 3 * mV, 12 * mV, 30*mV]
+    g_IK : [.1*nA, .1 * nA, 20 * nA, 100*nA]
+    b_IK : [1*ms, 1*ms, 10*ms, 50*ms]

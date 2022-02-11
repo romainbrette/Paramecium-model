@@ -1,0 +1,22 @@
+name: IK with HH dynamics
+
+equations: |
+  IK = g_IK * n_IK**p_IK * IV_K : amp
+  dn_IK / dt = (ninf_IK - n_IK)/tau_IK: 1
+  alphan = a_IK/exprel((V_IK-v)/ka_IK) : 1 / second
+  betan = b_IK*exp((V_IK-v)/kb_IK) : 1 / second
+  ninf_IK = 1/(1+betan/alphan) : 1
+  tau_IK = taumin_IK + 1/(alphan+betan) : second
+
+init:
+  n_IK : 1e-3
+
+bounds:
+    V_IK : [-20*mV, 1 * mV, 100 * mV, 200*mV]  # half-activation voltage
+    g_IK : [.01*nA, .5 * nA, 70 * nA, 200*nA]
+    a_IK : [1/(100*ms),1/(20*ms),1/(.1*ms),1/(.1*ms)]
+    b_IK : [1/(100*ms),1/(20*ms),1/(.1*ms),1/(.1*ms)]
+    p_IK : [1, 1, 8, 8]
+    ka_IK : [2*mV, 2*mV,30*mV,50*mV]
+    kb_IK : [2*mV, 2 * mV, 30 * mV, 50*mV]
+    taumin_IK : [.1*ms, 1*ms, 5*ms, 5*ms]

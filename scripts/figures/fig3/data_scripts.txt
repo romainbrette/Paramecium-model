@@ -1,0 +1,26 @@
+Data scripts for Figure 3
+-------------------------
+These should be run in sequence.
+
+
+Model fitting on deciliated cells:
+    fitting/electrode_and_RC.py
+    fitting/hyperpolarized.py
+    fitting/deciliated_bell.py
+    fitting/deciliated_bell_p2.py
+    fitting/deciliated_HH.py
+    fitting/deciliated_HH_p2.py
+    fitting/deciliated_simple.py
+    fitting/deciliated_simpler.py
+
+Data preparation:
+    data_preparation/make_tables.py
+
+Model comparison:
+    analysis/compare_deciliated_fits.py
+
+Selection (on deciliated_bell_p2):
+    analysis/selection_deciliated.py
+
+Display of all fits (on deciliated_bell_p2):
+    analysis/display_all_fits.py (choice 2)

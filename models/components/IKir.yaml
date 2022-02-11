@@ -1,0 +1,16 @@
+name: IKir, inward rectifier
+
+equations: |
+  IKir = g_IKir * n_IKir**p_IKir * IV_K : amp
+  ninf_IKir = 1/(1+exp((v-V_IKir)/k_IKir)) : 1
+  dn_IKir / dt = (ninf_IKir - n_IKir)/tau_IKir: 1
+
+init:
+  n_IKir : 1e-3 # this is for numerical issues
+
+bounds:
+  V_IKir : [-200*mV, -100 * mV, -20 * mV, -20*mV]
+  k_IKir : [1*mV, 2 * mV, 30 * mV, 100*mV]
+  g_IKir : [0*nA, .5 * nA, 10 * nA, 100*nA]
+  tau_IKir : [1*ms, 5 * ms, 50 * ms, 100*ms]
+  p_IKir : [1, 1, 8, 8]

@@ -1,0 +1,35 @@
+## Model fitted to the cell shown on Fig. 3 (simplified Boltzmann)
+date: '2021-09-17T13:41:14.817807'
+
+constants:
+    C: 1.0973364038754983e-10 * metre ** -2 * kilogram ** -1 * second ** 4 * amp **
+      2
+    DV: 0.02524877769948066 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+    EK: -0.06428551957940215 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+    EL: -0.01559973602071657 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+    Re: 136341888.2167402 * metre ** 2 * kilogram * second ** -3 * amp ** -2
+    V_IK: 0.026367997380524144 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+    a_IK: 0.0001 * second
+    b_IK: 0.004484892684523753 * second
+    gL: 1.0104402588505272e-08 * metre ** -2 * kilogram ** -1 * second ** 3 * amp
+      ** 2
+    g_IK: 2.518024523018377e-09 * amp
+    k_IK: 0.0061140048915575024 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+    taue: 0.0004575299409675793 * second
+
+equations: |
+    dv = (IL+IK+Ie)/C : volt/second
+    dv/dt = dv : volt
+    Ie = (ve-v)/Re : amp
+    dve/dt = (v-ve+Re*I)/taue : volt
+    IL = gL*(EL-v) : amp
+    IV_K = (EK-v)/DV : 1
+    IK = g_IK * n_IK**2 * IV_K : amp
+    ninf_IK = 1/(1+exp((V_IK-v)/k_IK)) : 1
+    dn_IK / dt = (ninf_IK - n_IK)/tau_IK: 1
+    tau_IK = a_IK + b_IK/(cosh((v-V_IK)/(2*k_IK))) : second
+
+init:
+    n_IK: 1e-3
+    v: EL
+    ve: EL

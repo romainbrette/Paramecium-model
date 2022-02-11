@@ -1,0 +1,19 @@
+name: ICa in the ciliary compartment, calcium inactivated
+
+equations: |
+  ICa_cilia = gCa_cilia*m_Ca_cilia**p_ICa*h_Ca_cilia*IV_Ca : amp
+  dm_Ca_cilia/dt = (minf_Ca_cilia-m_Ca_cilia)/taum_Ca_cilia : 1
+  minf_Ca_cilia = 1/(1+exp((VCa_cilia-v)/kCa_cilia)) : 1
+  h_Ca_cilia = 1/(1+exp(nCaM_Ca_cilia*(pCa-pKCa))) : 1
+
+bounds:
+  taum_Ca_cilia: [.1 * ms, .1 * ms, 3 * ms, 15*ms] # should it be voltage-dependent?
+  gCa_cilia: [1*nA, 2* nA, 150 * nA, 1000*nA]
+  VCa_cilia: [-45*mV, -30 * mV, 10 * mV, 20*mV]
+  kCa_cilia: [1*mV, 2 * mV, 8 * mV, 20*mV]
+  pKCa: [0, 1.5, 4, 7]
+  p_ICa: [1,1,4,8]
+  nCaM_Ca_cilia: [1,1,4,8]
+
+init:
+  m_Ca_cilia : 1e-3

@@ -1,0 +1,8 @@
+name: ohmic model of current-voltage dependence, IK
+
+equations: |
+  IV_K = (EK-v)/DV : 1
+
+bounds:
+  # IV_K
+  EK : [-200*mV, -120*mV, -10*mV, -10*mV]

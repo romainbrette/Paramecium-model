@@ -1,0 +1,64 @@
+## Model shown on Fig. 4
+date: '2020-10-28 17.46.05'
+
+constants:
+  C: 2.750507052169468e-10 * metre ** -2 * kilogram ** -1 * second ** 4 * amp **2
+  Cai0_cilia: 9.999999999999999e-05 * metre ** -3 * mole
+  DV: 0.02524877769948066 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+  EK: -0.048 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+  EL: -0.023411751263775885 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+  Jpumpmax_cilia: 1142.3189761405988 * second ** -1
+  Re: 82217866.6201199 * metre ** 2 * kilogram * second ** -3 * amp ** -2
+  VCa_cilia: 0.0052350685730586845 * metre ** 2 * kilogram * second ** -3 * amp** -1
+  V_IK: 0.00033134025628533796 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+  a_IK: 0.0001 * second
+  alpha_cilia: 2.5279915649124516 * second ** -1
+  angle_min: 0.7619278136285044
+  angle_span: -4.093696581608029
+  b_IK: 0.0029735148641919927 * second
+  gCa_cilia: 9.999999786870778e-07 * amp
+  gKCa_cilia: 2.7802175925161462e-08 * amp
+  gL: 1.1818575033517921e-08 * metre ** -2 * kilogram ** -1 * second ** 3 * amp** 2
+  g_IK: 2.3182572364827105e-09 * amp
+  kCa_cilia: 0.004659190819664767 * metre ** 2 * kilogram * second ** -3 * amp **-1
+  k_IK: 0.0032307051351857666 * metre ** 2 * kilogram * second ** -3 * amp ** -1
+  nCaM_Ca_cilia: 4.223339529295943
+  nCaM_KCa_cilia: 1.8305360132516815
+  n_electromotor: 5.592777655352956
+  pKCa: 3.196528772266444
+  pKKCa: 7.3674004749747075
+  pK_electromotor: 2.6329782364649623
+  p_ICa: 2
+  taue: 0.0005403169517715225 * second
+  taum_Ca_cilia: 0.001419776680849412 * second
+  v_cilia: 1.7000000000000002e-15 * metre ** 3
+
+equations: |
+  dv = (IL+IKCa_cilia+ICa_cilia+IK+Ie)/C : volt/second
+  dv/dt = dv : volt
+  Ie = (ve-v)/Re : amp
+  dve/dt = (v-ve+Re*I)/taue : volt
+  IL = gL*(EL-v) : amp
+  IV_K = (EK-v)/DV : 1
+  IK = g_IK * n_IK**2 * IV_K : amp
+  ninf_IK = 1/(1+exp((V_IK-v)/k_IK)) : 1
+  dn_IK / dt = (ninf_IK - n_IK)/tau_IK: 1
+  tau_IK = a_IK + b_IK/(cosh((v-V_IK)/(2*k_IK))) : second
+  #IV_Ca = -(2*v/DV-1/exprel(-2*v/DV)) : 1
+  IV_Ca = 1/exprel(2*v/DV) : 1 # equivalent expression
+  ICa_cilia = gCa_cilia*m_Ca_cilia**p_ICa*h_Ca_cilia*IV_Ca : amp
+  dm_Ca_cilia/dt = (minf_Ca_cilia-m_Ca_cilia)/taum_Ca_cilia : 1
+  minf_Ca_cilia = 1/(1+exp((VCa_cilia-v)/kCa_cilia)) : 1
+  h_Ca_cilia = 1/(1+exp(nCaM_Ca_cilia*(pCa-pKCa))) : 1
+  dpCa/dt = ICa_cilia/(2*F*Cai0_cilia*v_cilia)*exp(-pCa) + alpha_cilia*(exp(-pCa)-1) - Jpump_cilia : 1
+  Jpump_cilia = Jpumpmax_cilia / (1+exp(pCa)) : 1/second
+  IKCa_cilia = gKCa_cilia / (1+ exp(-nCaM_KCa_cilia*(pCa-pKKCa)))* IV_K : amp # gKCa is the amplitude at 10 uM
+  cos_angle = cos(angle_min + angle_span/(1+exp(-n_electromotor*(pCa-pK_electromotor)))) : 1
+  sin_angle = sin(angle_min + angle_span/(1+exp(-n_electromotor*(pCa-pK_electromotor)))) : 1
+
+init:
+  m_Ca_cilia: 1e-3
+  n_IK: 1e-3
+  pCa: 0
+  v: EL
+  ve: EL

@@ -1,0 +1,5 @@
+name: GHK model of current-voltage dependence, ICa
+
+equations: |
+  #IV_Ca = -(2*v/DV-1/exprel(-2*v/DV)) : 1
+  IV_Ca = 1/exprel(2*v/DV) : 1 # equivalent expression

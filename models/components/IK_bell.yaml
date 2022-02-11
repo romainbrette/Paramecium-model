@@ -1,0 +1,20 @@
+name: IK with bell time constant (no inactivation)
+
+equations: |
+    IK = g_IK * n_IK**p_IK * IV_K : amp
+    ninf_IK = 1/(1+exp((V_IK-v)/k_IK)) : 1
+    dn_IK / dt = (ninf_IK - n_IK)/tau_IK: 1
+    tau_IK = a_IK + b_IK/(cosh((v-Vtau_IK)/ktau_IK)) : second
+
+init:
+  n_IK : 1e-3
+
+bounds:
+    V_IK : [-20*mV, 1 * mV, 100 * mV, 200*mV]  # half-activation voltage
+    k_IK : [2*mV, 2 * mV, 30 * mV, 30*mV]
+    g_IK : [.01*nA, .5 * nA, 70 * nA, 200*nA]
+    a_IK : [.1*ms, 1*ms, 5*ms, 5*ms]
+    b_IK : [.01*ms, 1*ms, 10*ms, 50*ms]
+    Vtau_IK : [-40*mV, 1*mV, 100*mV, 200*mV]
+    ktau_IK : [2*mV, 2*mV, 30*mV, 30*mV]
+    p_IK : [1, 1, 8, 8]

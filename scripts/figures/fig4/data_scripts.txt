@@ -1,0 +1,25 @@
+Data scripts for Figure 4
+-------------------------
+These should be run in sequence, on ciliated cells with PIV.
+
+Image processing:
+    data_preparation/make_movie.py (producing mp4 movies, for visualization only)
+    data_preparation/morphology.py (labelling anterior and posterior ends)
+    image_analysis/piv.py
+    image_analysis/piv_movie.py (movies of PIV fields, for visualization only)
+    image_analysis/piv_analysis.py
+    image_analysis/fix_positions.py (fix anterior/posterior confusions)
+    image_analysis/local_piv_analysis.py (anterior and posterior analyses)
+
+Model fitting:
+    fitting/electrode_and_RC.py
+    fitting/ciliated.py
+
+Data preparation:
+    data_preparation/make_tables.py
+
+Selection:
+    analysis/selection_ciliated.py
+
+Display of all fits:
+    analysis/display_all_fits.py (choice 3)

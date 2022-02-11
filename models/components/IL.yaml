@@ -1,0 +1,13 @@
+name: leak current (standard)
+
+equations: |
+  IL = gL*(EL-v) : amp
+
+bounds:
+  # IL
+  gL : [2*nS, 2*nS, 50*nS, 50*nS]
+  EL : [-60*mV, -60*mV, 0*mV, 5*mV]
+
+init:
+  # IL
+  v : EL

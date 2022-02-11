@@ -1,0 +1,9 @@
+name: IK(Ca) in the ciliary compartment, instantaneous, simplified (low affinity)
+
+equations: |
+  IKCa_cilia = gKCa_cilia / (1+ exp(-nCaM_KCa_cilia*(pCa-pKKCa)))* IV_K : amp # gKCa is the amplitude at 10 uM
+
+bounds:
+  gKCa_cilia: [0*nA,0*nA,10*nA,500*nA]
+  nCaM_KCa_cilia : [1, 1, 5, 8]
+  pKKCa : [2,6,7,10]

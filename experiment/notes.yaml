@@ -1,0 +1,28 @@
+name: Electrophysiology experiment
+experimenter: Experimenter name
+
+strain: normal                # or pawn, pantophobiac
+culture: '2020-08-21'         # date of culture
+equilibration: '12:00:00'     # start time of equilibration
+
+electrodes:
+  glass: thin
+  solution:
+    KCl: 1
+
+particles: silica             # comment out if no particles
+
+solution:                     # all concentrations in mM, including colchicine etc
+  CaCl2: 1.0
+  KCl: 4.0
+
+flags:
+  - agar bridge
+  #- deciliated
+  #- iron
+
+notes:  |
+  These are details about the experimental project (set of experiments).
+
+observations: |
+  These are observations written after the experiment.

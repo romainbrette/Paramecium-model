@@ -1,0 +1,14 @@
+# This is an example configuration file, to put in the home folder
+
+# Root of data folders
+#root : '/mnt/storage_s1/Paramecium/Electrophysiology/'
+root : ~/hodgkin/Paramecium/Electrophysiology/Selection - AP model
+
+# Fitting on a cluster rather than a single PC (uses parallel)
+cluster : False
+
+# Number of simultaneous jobs for single PC batch fitting
+jobs : 5
+
+# Python binary
+python : ~/miniconda3/envs/Paramecium-model-fitting/bin/python3.7
