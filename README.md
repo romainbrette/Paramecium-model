@@ -90,11 +90,6 @@ protocol folders.
         * `piv_movie.py`: makes an mp4 movie from the velocity fields.
         * `track_ends.py`: tracks the anterior and posterior ends of the cell.
 
-Obsolete folders that will move out:
-* `conversion/`: transfer and conversion from old data formats.
-* `exploration/`: scripts to explore (hand-tuned) models.
-* `obsolete/`: old code.
-
 The code is organized around a modular system of models that
 can be combined together. Essentially, various models of currents and
 calcium dynamics.
