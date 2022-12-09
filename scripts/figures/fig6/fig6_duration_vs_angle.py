@@ -40,7 +40,7 @@ print('Proportion of points outside view:', 100*mean(1.*((x>xmax) | (y>ymax))), 
 ax_main.scatter(x, y, color='k', marker='.', s=1)
 #x_regression = np.array([0, 500])
 #ax_main.plot(x_regression, intercept + slope*x_regression, 'k--')
-ax_main.set(xlabel="Duration (ms)", ylabel="Angle (°)")
+ax_main.set(xlabel="Backward duration (ms)", ylabel="Reorientation (°)")
 ax_main.set_xlim(xmin, xmax)
 ax_main.set_ylim(ymin, ymax)
 ax_main.set_yticks([0,90,180])
