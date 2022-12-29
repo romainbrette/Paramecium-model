@@ -1,6 +1,7 @@
 These are scripts to fit models to _Paramecium_ recordings, and produce figures for the following paper:
 An electrophysiological and kinematic model of Paramecium, the “swimming neuron”
 Irene Elices, Anirudh Kulkarni, Nicolas Escoubet, Léa-Laetitia Pontani, Alexis Prevost, Romain Brette
+
 Contact : romain.brette@inserm.fr
 
 Requirements:
