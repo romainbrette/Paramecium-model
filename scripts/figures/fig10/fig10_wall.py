@@ -1,5 +1,5 @@
 '''
-Figure 7.
+Figure 10.
 First part, Paramecium bumping into a 'wall', modeling as an instantaneously depolarizing stimulus.
 '''
 from brian2 import *

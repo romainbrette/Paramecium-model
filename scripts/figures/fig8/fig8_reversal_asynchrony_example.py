@@ -1,5 +1,5 @@
 '''
-Figure 5.
+Figure 8.
 Example of reversal asynchrony between anterior and posterior side.
 2020-10-12 16.08.21
 '''

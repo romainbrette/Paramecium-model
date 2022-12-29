@@ -1,5 +1,5 @@
 '''
-IV curves for Fig. 2
+IV curves for Fig. 6
 (Ciliated cells with 0 and 4 mM KCl)
 '''
 import pandas as pd

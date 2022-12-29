@@ -1,4 +1,4 @@
-Data scripts for Figure 4
+Data scripts for Figure 7
 -------------------------
 These should be run in sequence, on ciliated cells with PIV.
 

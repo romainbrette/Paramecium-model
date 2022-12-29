@@ -1,5 +1,5 @@
 '''
-Figure 4.
+Figure 7.
 Zoom on action potential.
 Ionic current in the example, based on passive subtraction.
 Estimation of calcium accumulation.

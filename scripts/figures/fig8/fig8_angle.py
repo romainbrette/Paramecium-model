@@ -1,5 +1,5 @@
 '''
-Figure 5.
+Figure 8.
 Polar histogram of PIV angles for forward and backward swimming.
 '''
 from scipy.stats import circmean

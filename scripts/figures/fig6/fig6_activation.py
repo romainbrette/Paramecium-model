@@ -1,5 +1,5 @@
 '''
-Figure 2
+Figure 6
 Activation and time constant curve of IKir
 '''
 import pandas as pd

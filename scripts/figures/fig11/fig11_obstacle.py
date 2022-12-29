@@ -1,5 +1,5 @@
 '''
-Figure 8.
+Figure 11.
 Trajectories with an obstacle and torus topology.
 '''
 from brian2 import *
@@ -15,12 +15,16 @@ fontprops = fm.FontProperties(size=18)
 
 width, height = 4, 8
 
-### Load data
-i0 = 0 # We select one cell
-dt = 33*ms
+t_start = 0*second
+t_end = 20*second
+
 size = 4000 # in um
 radius = 1000
-data = load('attraction.npz')
+
+### Load data
+i0 = 1 # We select one cell
+dt = 33*ms
+data = load('obstacle.npz')
 x, y = data['x'], data['y']
 v, I, Ca = data['v'][i0], data['I'][i0], data['Ca'][i0]
 t = arange(x.shape[1])*dt
@@ -32,14 +36,14 @@ proportion_in = ((((x-size/2)**2 + (y-size/2)**2)<radius**2)*1.).mean(axis=0)
 print('Initial proportion of cells in disk:',proportion_in[0],'%')
 
 # Select the second half
-#x = x[:,int(x.shape[1]/2):]/1000.
-#y = y[:,int(y.shape[1]/2):]/1000.
+#x = x[:,int(t_start/dt):int(t_end/dt)]/1000.
+#y = y[:,int(t_start/dt):int(t_end/dt)]/1000.
 x = x/1000.
 y = y/1000.
 
 ### Figure
 
-fig = figure('Attraction', (width,height))
+fig = figure('Obstacle', (width,height))
 gs = gridspec.GridSpec(8, 4)
 
 # Plot trajectories with care to torus crossings
@@ -53,8 +57,6 @@ for i in range(N):
         previous = k
 
 # Selection of part of trajectory i0
-t_start = t[-1]-20*second
-t_end = t[-1]-0*second
 x, y = x[i0,int(t_start/dt):], y[i0,int(t_start/dt):]
 crossings = list(((diff(vstack([x, y]), axis=1) ** 2).sum(axis=0) > 1e-1).nonzero()[0])
 crossings.append(len(x))
@@ -75,7 +77,7 @@ ax0.set_ylabel('Cells in disk (%)')
 ax0.spines['right'].set_visible(False)
 ax0.spines['top'].set_visible(False)
 #ax0.set_xticklabels([])
-ax0.set_ylim(0,60)
+ax0.set_ylim(0,25)
 
 # Traces
 print(t_start, t_end)
@@ -92,7 +94,7 @@ ax1.spines['top'].set_visible(False)
 #ax1.set_xticklabels([])
 
 ax2 = fig.add_subplot(gs[6,:])
-ax2.plot(t/second, -I, 'k')
+ax2.plot(t/second, I, 'k')
 ax2.set_xlim(t_start/second, t_end/second)
 #ax2.set_ylim(0,0.3)
 ax2.set_ylabel('I (nA)')
@@ -113,6 +115,6 @@ ax3.set_xlabel('Time (s)')
 
 fig.tight_layout()
 
-savefig('fig8_attraction.png', dpi=300)
+savefig('fig8_obstacle.png', dpi=300)
 
 show()

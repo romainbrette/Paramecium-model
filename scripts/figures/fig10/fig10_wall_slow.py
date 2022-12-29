@@ -1,5 +1,5 @@
 '''
-Figure 7.
+Figure 10.
 Second part, Paramecium bumping into a 'wall', modeling as a depolarizing stimulus with 50 ms activation/deactivation.
 '''
 from brian2 import *

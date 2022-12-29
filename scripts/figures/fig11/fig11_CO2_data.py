@@ -1,5 +1,5 @@
 '''
-Fig. 8.
+Fig. 11.
 Collective behavior.
 Simulation of trajectories with breathing paramecia.
 '''

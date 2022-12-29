@@ -1,5 +1,5 @@
 '''
-Figure 8.
+Figure 11.
 Shows snapshots of chemotactic trajectories.
 '''
 from brian2 import *

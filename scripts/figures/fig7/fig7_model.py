@@ -1,5 +1,5 @@
 '''
-Figure 4.
+Figure 7.
 Fit to the example.
 '''
 from brian2 import *

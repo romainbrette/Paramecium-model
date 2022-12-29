@@ -1,5 +1,5 @@
 '''
-Figure 2.
+Figure 5.
 Example of trace and fit
 '''
 from brian2 import *

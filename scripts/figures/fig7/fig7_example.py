@@ -1,5 +1,5 @@
 '''
-Figure 4.
+Figure 7.
 Example of trace: V, I and cos(angle).
 '''
 from brian2 import *

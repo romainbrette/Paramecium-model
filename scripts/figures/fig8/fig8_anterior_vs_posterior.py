@@ -1,5 +1,5 @@
 '''
-Fig. 5
+Fig. 8
 Anterior vs. posterior reversal time.
 '''
 from brian2 import *

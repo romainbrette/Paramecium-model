@@ -1,5 +1,5 @@
 '''
-Figure 2
+Figure 5
 Activation curve of IKir
 '''
 from os.path import expanduser

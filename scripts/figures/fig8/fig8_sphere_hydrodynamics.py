@@ -1,5 +1,5 @@
 '''
-Fig. 5.
+Fig. 8.
 Calculation of motion vectors with asynchronous ciliary reversal.
 '''
 from hydrodynamics import *

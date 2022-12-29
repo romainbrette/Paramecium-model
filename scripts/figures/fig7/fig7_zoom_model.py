@@ -1,5 +1,5 @@
 '''
-Figure 4.
+Figure 7.
 Zoom: predicted currents.
 '''
 from brian2 import *

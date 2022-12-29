@@ -1,4 +1,4 @@
-Data scripts for Figure 2
+Data scripts for Figure 5
 -------------------------
 These should be run in sequence.
 

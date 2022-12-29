@@ -1,5 +1,5 @@
 '''
-Fig. 8.
+Fig. 11.
 Collective behavior.
 '''
 from brian2 import *

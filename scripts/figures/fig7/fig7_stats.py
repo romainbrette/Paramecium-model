@@ -1,5 +1,5 @@
 '''
-Figure 4
+Figure 7
 Statistics of ciliated fits
 '''
 import pandas as pd
